@@ -1,8 +1,10 @@
 import React from "react";
 
-export const ProfileDropdown = () => {
+export const ProfileDropdown = (props) => {
   return (
     <div className="dropdown">
+      {/* <div className="decorationBox"></div> */}
+      <span className="dropdownTitle">{props.dropdownTitle}</span>
       <form>
         <label>Username</label>
         <input placeholder="Email" />
@@ -10,23 +12,24 @@ export const ProfileDropdown = () => {
         <input placeholder="password" />
         <span className="forgotPassword">forgot password</span>
         <div className="formButtonContainer">
-          <button>Sign Up</button>
-          <button>Login</button>
+          <button className="profileButtons">Sign Up</button>
+          <button className="profileButtons">Login</button>
         </div>
       </form>
     </div>
   );
 };
 
-export const DonateDropdown = () => {
+export const DonateDropdown = (props) => {
   return (
     <div className="dropdown">
-      <form>
-        <label>But me Chipotle</label>
-        <input placeholder="Email" />
-        <label>Messgae</label>
-        <input placeholder="password" />
-      </form>
+      <span className="dropdownTitle">{props.dropdownTitle}</span>
+      <div className="donateButtonContainer">
+        <button className="donateButton">send BTC</button>
+        <button className="donateButton">send ETH</button>
+        <button className="donateButton">Cashapp</button>
+        <button className="donateButton">Paypal</button>
+      </div>
     </div>
   );
 };

@@ -1,39 +1,77 @@
 nav {
   background-color: var(--dark);
   width: 100%;
+  height: 125px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  position: relative;
+  z-index: 2;
+  box-shadow: var(--mainShadow);
 }
 
 .navbar__logo {
   width: 150px;
-  margin: 25px;
+  margin: 25px auto 25px 25px;
 }
 
+.navListBG {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  background-color: var(--electric);
+  border-radius: 15px 0px 0px 15px;
+}
 .navList {
   display: flex;
+  margin: 0px 25px;
 }
 
 .navButton__icon {
   position: relative;
   font-size: 1.75em;
   margin: 0px 20px;
-  background-color: var(--electric);
+  background-color: var(--lightOP);
   width: 50px;
   height: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 10px 10px 0px 0px;
+  border-radius: 10px;
+}
+
+.navButton__icon:focus {
+  background-color: var(--light);
+}
+
+li {
+  position: relative;
 }
 
 .dropdown {
-  background-color: var(--electric);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background-color: var(--light);
   position: absolute;
-  top: 50px;
+  top: 60px;
+  right: 20px;
+  border-radius: 15px 15px 15px 15px;
+}
+
+.dropdownTitle {
+  margin: 5px auto;
+  color: var(--dark);
+  font-size: 1.5em;
+}
+
+.decorationBox {
+  position: absolute;
+  background: var(--electric);
+  width: 50px;
+  height: 50px;
+  top: -10px;
   right: 0px;
-  border-radius: 15px 0px 15px 15px;
 }
 
 .formButtonContainer {
@@ -45,25 +83,26 @@ nav {
 form {
   display: flex;
   flex-direction: column;
-  margin: 10px 20px;
+  margin: 0px 20px;
 }
 
 label {
-  color: var(--white);
-  font-size: 0.75em;
+  color: var(--dark);
+  font-size: 1em;
   margin: 15px 0px 5px 0px;
 }
 
 input {
   border-radius: 5px;
+  background-color: var(--white);
   padding: 5px;
   border: none;
   outline: none;
 }
 
 .forgotPassword {
-  color: var(--white);
-  font-size: 0.5em;
+  color: var(--dark);
+  font-size: 0.75em;
 }
 
 button {
@@ -72,5 +111,38 @@ button {
   height: 30px;
   border: none;
   border-radius: 5px;
-  background: var(--orange);
+  background: var(--electric);
+}
+
+.donateButton {
+  margin: 5px 5px;
+}
+
+.donateButtonContainer {
+  display: flex;
+  margin: 10px 5px;
+}
+
+.profileButtons:hover,
+.donateButton:hover {
+  box-shadow: 0px 0px 5px 0px var(--electric);
+}
+
+.body {
+  display: flex;
+  height: 100%;
+}
+.wallet {
+  position: relative;
+  z-index: 1;
+  background-color: var(--dark);
+  width: 30%;
+  height: 100%;
+  box-shadow: var(--mainShadow);
+}
+
+.content {
+  background-color: var(--dark);
+  width: 70%;
+  height: 100%;
 }

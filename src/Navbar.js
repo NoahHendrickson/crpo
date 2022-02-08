@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Navbar.css";
 import { ReactComponent as Logo } from "./icons/crpo-logo.svg";
 import { ProfileDropdown, DonateDropdown } from "./ProfileDropdown";
@@ -9,9 +9,11 @@ const Navbar = (props) => {
       <Logo className="navbar__logo" />
       <NavList>
         <NavButton icon="😇">
-          <ProfileDropdown />
+          <ProfileDropdown dropdownTitle="Profile" />
         </NavButton>
-        <NavButton icon="🤑" />
+        <NavButton icon="🤑">
+          <DonateDropdown dropdownTitle="Buy Me Chipotle" />
+        </NavButton>
         <NavButton icon="🤬" />
       </NavList>
     </nav>
@@ -19,16 +21,22 @@ const Navbar = (props) => {
 };
 
 const NavList = (props) => {
-  return <ul className="navList">{props.children}</ul>;
+  return (
+    <div className="navListBG">
+      <ul className="navList">{props.children}</ul>
+    </div>
+  );
 };
 
 const NavButton = (props) => {
+  const [open, setOpen] = useState(false);
+
   return (
     <li>
-      <a href="#" className="navButton__icon">
+      <a onClick={() => setOpen(!open)} href="#" className="navButton__icon">
         {props.icon}
-        {props.children}
       </a>
+      {open && props.children}
     </li>
   );
 };
