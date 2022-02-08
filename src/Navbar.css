@@ -1,0 +1,76 @@
+nav {
+  background-color: var(--dark);
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.navbar__logo {
+  width: 150px;
+  margin: 25px;
+}
+
+.navList {
+  display: flex;
+}
+
+.navButton__icon {
+  position: relative;
+  font-size: 1.75em;
+  margin: 0px 20px;
+  background-color: var(--electric);
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px 10px 0px 0px;
+}
+
+.dropdown {
+  background-color: var(--electric);
+  position: absolute;
+  top: 50px;
+  right: 0px;
+  border-radius: 15px 0px 15px 15px;
+}
+
+.formButtonContainer {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 20px;
+}
+
+label {
+  color: var(--white);
+  font-size: 0.75em;
+  margin: 15px 0px 5px 0px;
+}
+
+input {
+  border-radius: 5px;
+  padding: 5px;
+  border: none;
+  outline: none;
+}
+
+.forgotPassword {
+  color: var(--white);
+  font-size: 0.5em;
+}
+
+button {
+  color: var(--white);
+  width: 70px;
+  height: 30px;
+  border: none;
+  border-radius: 5px;
+  background: var(--orange);
+}
