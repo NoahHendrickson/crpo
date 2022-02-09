@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import "./Navbar.css";
 import { ReactComponent as Logo } from "./icons/crpo-logo.svg";
 import { ProfileDropdown, DonateDropdown } from "./ProfileDropdown";
+import NavPrices from "./NavPrices";
 
 const Navbar = (props) => {
   return (
     <nav className="navbar">
       <Logo className="navbar__logo" />
+      <NavPrices />
       <NavList>
         <NavButton icon="😇">
           <ProfileDropdown dropdownTitle="Profile" />
