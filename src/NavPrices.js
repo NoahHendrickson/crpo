@@ -1,25 +1,35 @@
-import { setSelectionRange } from "@testing-library/user-event/dist/utils";
 import React, { useRef, useState, useEffect } from "react";
 import Coin from "./Coin";
+import CoinList from "./CoinList";
 
 const NavPrices = (props) => {
   const tickerRef = useRef();
   const [coins, setCoins] = useState([]);
+  const spanRef = useRef();
   let cryptoTicker;
-  function addCoin() {
-    cryptoTicker = tickerRef.current.value;
-    const coinData = new WebSocket(
-      `wss://stream.binance.com:9443/ws/${cryptoTicker}usdt@trade`
+
+  function handleSocket() {}
+
+  function addCoin(e) {
+    e.preventDefault();
+    let ticker = tickerRef.current.value;
+    const ws = new WebSocket(
+      `wss://stream.binance.com:9443/ws/${ticker}usdt@trade`
     );
-    coinData.onmessage = (e) => {
-      const data = JSON.parse(e.data);
-      const price = parseFloat(data.p);
-      console.log(price);
-    };
+    setCoins((prevCoins) => {
+      ws.onmessage = (event) => {
+        let coinData = JSON.parse(event.data);
+        let price = parseFloat(coinData.p);
+        spanRef.current.innerHTML = price;
+      };
+      return [...prevCoins, { name: ticker.toUpperCase() }];
+    });
+    console.log(ticker);
   }
   return (
     <div className="navPrices">
-      <ul className="navPrices__list">{/* <Coin /> */}</ul>
+      <span ref={spanRef}></span>
+      <CoinList coins={coins} />
       <div className="tickerPickerContainer">
         <form onSubmit={addCoin} className="slider">
           <label>Ticker</label>

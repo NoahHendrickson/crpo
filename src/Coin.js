@@ -1,7 +1,11 @@
 import React from "react";
 
-const Coin = (props) => {
-  return <li>{props.name}</li>;
+const Coin = ({ coins }) => {
+  return (
+    <div className="coin">
+      {coins.name} {coins.price}
+    </div>
+  );
 };
 
 export default Coin;
