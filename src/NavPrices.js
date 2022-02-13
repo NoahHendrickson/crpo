@@ -3,10 +3,33 @@ import Coin from "./Coin";
 import CoinList from "./CoinList";
 
 const NavPrices = (props) => {
+  const parentRef = useRef();
   const tickerRef = useRef();
   const [coins, setCoins] = useState([]);
-  const spanRef = useRef();
-  let cryptoTicker;
+
+  // let ws = new WebSocket("wss://dex.binance.org/api/ws");
+  // function handleSocket(e) {
+  //   const ticker = tickerRef.current.value.toUpperCase();
+  //   e.preventDefault();
+  //   let msg = {
+  //     method: "subscribe",
+  //     topic: "trades",
+  //     symbols: ["ETH_USD"],
+  //   };
+  //   let jsonMsg = JSON.stringify(msg);
+  //   ws.send(jsonMsg);
+
+  //   ws.onmessage = (e) => {
+  //     let data = JSON.parse(e.data);
+  //     let price = data.p;
+  //     let id = data.id;
+  //     let name = data.product_id;
+  //     console.log(data);
+  //     setCoins(() => {
+  //       return [{ id: id, name: name, price: price }];
+  //     });
+  //   };
+  // }
 
   useEffect(() => {
     fetch(
@@ -26,13 +49,13 @@ const NavPrices = (props) => {
       if (coinData[0][i].symbol === ticker) {
         let price = coinData[0][i].current_price;
         let id = coinData[0][i].id;
-        let name = coinData[0][i].symbol.toUpperCase();
+        let name = coinData[0][i].symbol;
         let icon = coinData[0][i].image;
         console.log(price);
         setCoins((prevCoins) => {
           return [
             ...prevCoins,
-            { id: id, name: name, price, price, image: icon },
+            { id: id, name: name, price: price, image: icon },
           ];
         });
       }
@@ -40,7 +63,6 @@ const NavPrices = (props) => {
   }
   return (
     <div className="navPrices">
-      <span ref={spanRef}></span>
       <CoinList coins={coins} />
       <div className="tickerPickerContainer">
         <form onSubmit={addCoin} className="slider">
