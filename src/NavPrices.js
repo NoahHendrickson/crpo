@@ -7,30 +7,6 @@ const NavPrices = (props) => {
   const tickerRef = useRef();
   const [coins, setCoins] = useState([]);
 
-  // let ws = new WebSocket("wss://dex.binance.org/api/ws");
-  // function handleSocket(e) {
-  //   const ticker = tickerRef.current.value.toUpperCase();
-  //   e.preventDefault();
-  //   let msg = {
-  //     method: "subscribe",
-  //     topic: "trades",
-  //     symbols: ["ETH_USD"],
-  //   };
-  //   let jsonMsg = JSON.stringify(msg);
-  //   ws.send(jsonMsg);
-
-  //   ws.onmessage = (e) => {
-  //     let data = JSON.parse(e.data);
-  //     let price = data.p;
-  //     let id = data.id;
-  //     let name = data.product_id;
-  //     console.log(data);
-  //     setCoins(() => {
-  //       return [{ id: id, name: name, price: price }];
-  //     });
-  //   };
-  // }
-
   useEffect(() => {
     fetch(
       "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false"
@@ -64,10 +40,14 @@ const NavPrices = (props) => {
   return (
     <div className="navPrices">
       <CoinList coins={coins} />
-      <div className="tickerPickerContainer">
-        <form onSubmit={addCoin} className="slider">
+      <div className="navPrices__slider">
+        <form onSubmit={addCoin} className="navPrices__form">
           <label>Ticker</label>
-          <input ref={tickerRef} className="tickerInput" placeholder="ticker" />
+          <input
+            ref={tickerRef}
+            className="navPrices__input"
+            placeholder="ticker"
+          />
           <button>Submit</button>
         </form>
       </div>

@@ -11,8 +11,6 @@ const Coin = ({ coins }) => {
     ws.onmessage = (e) => {
       let priceObject = JSON.parse(e.data);
       let current = parseFloat(priceObject.p).toFixed(2);
-      let newP = current;
-      console.log(current);
       setCurrentPrice(() => {
         return [current];
       });
@@ -21,8 +19,8 @@ const Coin = ({ coins }) => {
 
   return (
     <ul className="coin">
-      <li>{coins.name} 🚀</li>
-      <li>${currentPrice}</li>
+      <li>{coins.name.toUpperCase()} 🚀</li>
+      <li>${currentPrice === undefined ? coins.price : currentPrice}</li>
     </ul>
   );
 };

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./Navbar.css";
 import { ReactComponent as Logo } from "./icons/crpo-logo.svg";
 import { ProfileDropdown, DonateDropdown } from "./ProfileDropdown";
 import NavPrices from "./NavPrices";
@@ -24,8 +23,8 @@ const Navbar = (props) => {
 
 const NavList = (props) => {
   return (
-    <div className="navListBG">
-      <ul className="navList">{props.children}</ul>
+    <div className="navList">
+      <ul className="navList__items">{props.children}</ul>
     </div>
   );
 };

@@ -12,7 +12,15 @@ const Body = () => {
 const Wallet = () => {
   return (
     <div className="wallet">
-      <h1>Wallets</h1>
+      <div className="wallet__slidedown">
+        <form className="wallet__form">
+          <input className="wallet__input" placeholder="ticker" />
+          <input className="wallet__input" placeholder="Quantity" />
+          <input className="wallet__input" placeholder="Exchange" />
+          <button>Submit</button>
+        </form>
+      </div>
+      <h1 className="wallet__title">Wallets</h1>
       <ul className="wallet__list">
         <li className="asset">
           <p>ETH</p>

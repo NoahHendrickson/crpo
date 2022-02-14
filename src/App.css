@@ -1,3 +1,221 @@
 .App {
   height: 1080px;
 }
+
+nav {
+  background-color: var(--dark);
+  width: 100%;
+  height: 125px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+  box-shadow: var(--mainShadow);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  margin: 0px 20px;
+}
+
+label {
+  color: var(--dark);
+  font-size: 1em;
+  margin: 15px 0px 5px 0px;
+}
+
+input {
+  border-radius: 5px;
+  background-color: var(--white);
+  padding: 5px;
+  border: none;
+  outline: none;
+}
+
+li {
+  position: relative;
+}
+
+button {
+  color: var(--white);
+  width: 70px;
+  height: 30px;
+  border: none;
+  border-radius: 5px;
+  background: var(--electric);
+}
+
+.navbar__logo {
+  width: 200px;
+  margin: 25px 25px 25px 25px;
+}
+
+.navList {
+  margin-left: 75px;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  background-color: var(--electric);
+  border-radius: 15px 0px 0px 15px;
+}
+.navList__items {
+  display: flex;
+  margin: 0px 25px;
+}
+
+.navButton__icon {
+  position: relative;
+  font-size: 1.75em;
+  margin: 0px 20px;
+  background-color: var(--lightOP);
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+}
+
+.navButton__icon:focus {
+  background-color: var(--light);
+}
+
+.navPrices {
+  position: relative;
+  font-size: 1.5em;
+  color: var(--white);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 0px auto 0px 0px;
+  height: 100%;
+  width: 100%;
+}
+
+.navPrices__slider {
+  position: absolute;
+  z-index: 0;
+  display: flex;
+  flex-direction: column;
+  right: -50px;
+  transform: translateX(200px);
+  height: 100%;
+  width: 200px;
+  background-color: var(--light);
+  border-radius: 15px 0px 0px 15px;
+  transition: transform 250ms;
+}
+
+.navPrices__slider:hover {
+  transform: translateX(105px);
+}
+
+.navPrices__input {
+  width: 70px;
+  padding: 5px 0px;
+  margin-bottom: 5px;
+}
+
+.navPrices__form {
+  margin: 0px 25px;
+}
+
+.coin {
+  margin: 25px;
+}
+
+.dropdown {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background-color: var(--light);
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  border-radius: 15px 15px 15px 15px;
+}
+
+.dropdown__title {
+  margin: 5px auto;
+  color: var(--dark);
+  font-size: 1.5em;
+}
+
+.profileButton__container {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0px;
+}
+
+.forgotPassword {
+  color: var(--dark);
+  font-size: 0.75em;
+}
+
+.donateButton {
+  margin: 5px 5px;
+}
+
+.donateButton__container {
+  display: flex;
+  margin: 10px 5px;
+}
+
+.profileButton:hover,
+.donateButton:hover {
+  box-shadow: 0px 0px 5px 0px var(--electric);
+}
+
+.body {
+  display: flex;
+  height: 100%;
+}
+.wallet {
+  position: relative;
+  z-index: 1;
+  background-color: var(--dark);
+  width: 30%;
+  height: 100%;
+  box-shadow: var(--mainShadow);
+}
+
+.wallet__slidedown {
+  position: absolute;
+  background-color: var(--orange);
+  height: 100px;
+  width: 100%;
+  border-radius: 0px 0px 15px 15px;
+  transform: translateY(-75px);
+  transition: transform 300ms;
+}
+
+.wallet__slidedown:hover {
+  transform: translateY(0px);
+}
+
+.wallet__form {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.wallet__input {
+  width: 60px;
+  margin: 0px 5px;
+}
+
+.wallet__title {
+  margin-top: 50px;
+}
+
+.content {
+  background-color: var(--dark);
+  width: 70%;
+  height: 100%;
+}
