@@ -3,7 +3,7 @@ import React from "react";
 export const ProfileDropdown = (props) => {
   return (
     <div className="dropdown">
-      <span className="dropdownTitle">{props.dropdownTitle}</span>
+      <span className="dropdown__title">{props.dropdownTitle}</span>
       <form>
         <label>Username</label>
         <input placeholder="Email" />
