@@ -75,7 +75,9 @@ const Wallet = (props) => {
           <th>Price</th>
           <th>Total Value</th>
         </thead>
-        <WalletTable assets={assets} />
+        <tbody>
+          <WalletTable assets={assets} />
+        </tbody>
       </table>
     </div>
   );

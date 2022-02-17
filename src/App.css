@@ -63,6 +63,10 @@ th {
   color: var(--white);
 }
 
+tr {
+  margin: 40px;
+}
+
 .wallet__button--long {
   width: 100%;
   grid-column: span 3;
