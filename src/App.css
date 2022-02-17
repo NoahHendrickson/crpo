@@ -47,6 +47,22 @@ button {
   background: var(--electric);
 }
 
+table {
+  margin-top: 25px;
+  font-size: 1.25em;
+  width: 90%;
+}
+
+td {
+  text-align: center;
+  color: var(--white);
+  border-bottom: solid var(--light) 3px;
+}
+
+th {
+  color: var(--white);
+}
+
 .wallet__button--long {
   width: 100%;
   grid-column: span 3;
