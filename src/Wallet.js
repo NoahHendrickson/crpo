@@ -7,6 +7,23 @@ const Wallet = (props) => {
   const inputNameRef = useRef();
   const inputAmountRef = useRef();
   const inputExchangeRef = useRef();
+  const STORED_ASSETS = "assets list";
+
+  // useEffect(() => {
+  //   const storedAssets = JSON.parse(localStorage.getItem(STORED_ASSETS));
+  //   setAssets(storedAssets);
+  // }, []);
+
+  // useEffect(() => {
+  //   localStorage.setItem(STORED_ASSETS, JSON.stringify(assets));
+  // }, [assets]);
+
+  function removeAsset() {
+    console.log(assets);
+    setAssets((prevAssets) => {
+      return [prevAssets.slice(0, -1)];
+    });
+  }
 
   useEffect(() => {
     fetch(
@@ -14,6 +31,7 @@ const Wallet = (props) => {
     )
       .then((response) => response.json())
       .then((data) => assetData.push(data));
+    return () => {};
   }, [assets]);
 
   let assetData = [];
@@ -64,16 +82,21 @@ const Wallet = (props) => {
           />
           <button className="wallet__button--long">Add</button>
         </form>
+        <button onClick={removeAsset} className="wallet__button--long">
+          Remove
+        </button>
         <DownCarat className="DownCarat" />
       </div>
       <h1 className="wallet__title">Wallet</h1>
       <table>
         <thead>
-          <th>Asset</th>
-          <th>Amount</th>
-          <th>Exchanage</th>
-          <th>Price</th>
-          <th>Total Value</th>
+          <tr>
+            <th>Asset</th>
+            <th>Amount</th>
+            <th>Exchanage</th>
+            <th>Price</th>
+            <th>Total Value</th>
+          </tr>
         </thead>
         <tbody>
           <WalletTable assets={assets} />

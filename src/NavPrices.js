@@ -6,6 +6,16 @@ const NavPrices = (props) => {
   const parentRef = useRef();
   const tickerRef = useRef();
   const [coins, setCoins] = useState([]);
+  const STORED_COINS = "coins list";
+
+  // useEffect(() => {
+  //   const storedCoins = JSON.parse(localStorage.getItem(STORED_COINS));
+  //   setCoins(storedCoins);
+  // }, []);
+
+  // useEffect(() => {
+  //   localStorage.setItem(STORED_COINS, JSON.stringify(coins));
+  // }, [coins]);
 
   useEffect(() => {
     fetch(
