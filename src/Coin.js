@@ -15,6 +15,7 @@ const Coin = ({ coins }) => {
         return [current];
       });
     };
+    return () => {};
   }, [coins]);
 
   return (

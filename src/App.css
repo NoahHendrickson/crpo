@@ -60,6 +60,10 @@ td {
   padding-top: 15px;
 }
 
+.tableData__button {
+  border: none;
+}
+
 th {
   color: var(--white);
 }
@@ -263,4 +267,8 @@ th {
   background-color: var(--dark);
   width: 50%;
   height: 100%;
+}
+
+.PieChart__container {
+  width: 70%;
 }

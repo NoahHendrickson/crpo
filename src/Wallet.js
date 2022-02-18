@@ -1,6 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
 import WalletTable from "./WalletTable";
 import { ReactComponent as DownCarat } from "./icons/DownCarat.svg";
+import PieChart from "./PieChart";
+import { Chart } from "react-chartjs-2";
 
 const Wallet = (props) => {
   const [assets, setAssets] = useState([]);
@@ -19,10 +21,10 @@ const Wallet = (props) => {
   // }, [assets]);
 
   function removeAsset() {
-    console.log(assets);
-    setAssets((prevAssets) => {
-      return [prevAssets.slice(0, -1)];
+    setAssets(() => {
+      return [...assets.slice(0, -1)];
     });
+    console.log(assets);
   }
 
   useEffect(() => {
@@ -60,48 +62,59 @@ const Wallet = (props) => {
       }
     }
   }
+  console.log(assets);
 
   return (
-    <div className="wallet">
-      <div className="wallet__slidedown">
-        <form onSubmit={addAsset} className="wallet__form">
-          <input
-            ref={inputNameRef}
-            className="wallet__input"
-            placeholder="Ticker"
-          />
-          <input
-            ref={inputAmountRef}
-            className="wallet__input"
-            placeholder="Quantity"
-          />
-          <input
-            ref={inputExchangeRef}
-            className="wallet__input"
-            placeholder="Exchange"
-          />
-          <button className="wallet__button--long">Add</button>
-        </form>
-        <button onClick={removeAsset} className="wallet__button--long">
-          Remove
-        </button>
-        <DownCarat className="DownCarat" />
+    <>
+      <div className="wallet">
+        <div className="wallet__slidedown">
+          <form onSubmit={addAsset} className="wallet__form">
+            <input
+              ref={inputNameRef}
+              className="wallet__input"
+              placeholder="Ticker"
+            />
+            <input
+              ref={inputAmountRef}
+              className="wallet__input"
+              placeholder="Quantity"
+            />
+            <input
+              ref={inputExchangeRef}
+              className="wallet__input"
+              placeholder="Exchange"
+            />
+            <button className="wallet__button--long">Add</button>
+          </form>
+          <DownCarat className="DownCarat" />
+        </div>
+        <h1 className="wallet__title">Wallet</h1>
+        <table>
+          <thead>
+            <tr>
+              <th>Asset</th>
+              <th>Amount</th>
+              <th>Exchanage</th>
+              <th>Price</th>
+              <th>Total Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <WalletTable removeAsset={removeAsset} assets={assets} />
+          </tbody>
+        </table>
       </div>
-      <h1 className="wallet__title">Wallet</h1>
-      <table>
-        <thead>
-          <tr>
-            <th>Asset</th>
-            <th>Amount</th>
-            <th>Exchanage</th>
-            <th>Price</th>
-            <th>Total Value</th>
-          </tr>
-        </thead>
-        <tbody>
-          <WalletTable assets={assets} />
-        </tbody>
-      </table>
+      <Content assets={assets} />
+    </>
+  );
+};
+
+const Content = ({ assets }) => {
+  return (
+    <div className="content">
+      <div className="PieChart__container">
+        <PieChart assets={assets} />
+      </div>
     </div>
   );
 };
