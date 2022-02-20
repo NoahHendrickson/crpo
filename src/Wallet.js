@@ -2,29 +2,55 @@ import React, { useState, useRef, useEffect } from "react";
 import WalletTable from "./WalletTable";
 import { ReactComponent as DownCarat } from "./icons/DownCarat.svg";
 import PieChart from "./PieChart";
-import { Chart } from "react-chartjs-2";
 
 const Wallet = (props) => {
   const [assets, setAssets] = useState([]);
+  const [chartLabels, setChartLabels] = useState([]);
+  const [chartAmounts, setChartAmounts] = useState([]);
+  const [chartData, setChartData] = useState({});
+
   const inputNameRef = useRef();
   const inputAmountRef = useRef();
   const inputExchangeRef = useRef();
   const STORED_ASSETS = "assets list";
+  const STORED_PIECHART_LABELS = "Pie Chart Labels";
+  const STORED_PIECHART_AMOUNTS = "Pie Chart Amounts";
 
-  // useEffect(() => {
-  //   const storedAssets = JSON.parse(localStorage.getItem(STORED_ASSETS));
-  //   setAssets(storedAssets);
-  // }, []);
+  useEffect(() => {
+    const storedAmounts = JSON.parse(
+      localStorage.getItem(STORED_PIECHART_AMOUNTS)
+    );
+    if (storedAmounts) setChartAmounts(storedAmounts);
+  }, []);
 
-  // useEffect(() => {
-  //   localStorage.setItem(STORED_ASSETS, JSON.stringify(assets));
-  // }, [assets]);
+  useEffect(() => {
+    localStorage.setItem(STORED_PIECHART_AMOUNTS, JSON.stringify(chartAmounts));
+  }, [chartAmounts]);
+
+  useEffect(() => {
+    const storedLabels = JSON.parse(
+      localStorage.getItem(STORED_PIECHART_LABELS)
+    );
+    if (storedLabels) setChartLabels(storedLabels);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem(STORED_PIECHART_LABELS, JSON.stringify(chartLabels));
+  }, [chartLabels]);
+
+  useEffect(() => {
+    const storedAssets = JSON.parse(localStorage.getItem(STORED_ASSETS));
+    if (storedAssets) setAssets(storedAssets);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem(STORED_ASSETS, JSON.stringify(assets));
+  }, [assets]);
 
   function removeAsset() {
     setAssets(() => {
       return [...assets.slice(0, -1)];
     });
-    console.log(assets);
   }
 
   useEffect(() => {
@@ -36,33 +62,63 @@ const Wallet = (props) => {
     return () => {};
   }, [assets]);
 
+  let labelPassDown = [];
   let assetData = [];
   function addAsset(e) {
     e.preventDefault();
+
     let ticker = inputNameRef.current.value;
     let amount = inputAmountRef.current.value;
     let exchange = inputExchangeRef.current.value;
+
     for (let i = 0; i < assetData[0].length; i++) {
       if (assetData[0][i].symbol === ticker) {
-        let price = assetData[0][i].current_price;
-        let id = assetData[0][i].id;
-        let name = assetData[0][i].symbol;
         setAssets((prevAssets) => {
           return [
             ...prevAssets,
             {
-              id: id,
-              name: name,
-              price: price,
+              id: assetData[0][i].id,
+              name: assetData[0][i].symbol,
+              price: assetData[0][i].current_price,
               amount: amount,
               exchange: exchange,
             },
           ];
         });
+        setChartLabels((prevChartLabels) => {
+          return [...prevChartLabels, assetData[0][i].symbol];
+        });
+        setChartAmounts((prevChartAmounts) => {
+          return [...prevChartAmounts, amount * assetData[0][i].current_price];
+        });
       }
     }
   }
-  console.log(assets);
+  const data = {
+    labels: chartLabels,
+    datasets: [
+      {
+        data: chartAmounts,
+        backgroundColor: [
+          "rgba(241, 119, 4, .5)",
+          "rgba(91, 28, 237, .5)",
+          "rgba(145, 255, 156, .5)",
+          "rgba(67, 123, 226, .5)",
+          "rgba(0, 202, 202, .5)",
+          "rgba(2, 142, 119, .5)",
+        ],
+        borderColor: [
+          "rgba(241, 119, 4, 1)",
+          "rgba(91, 28, 237, 1)",
+          "rgba(145, 255, 156, 1)",
+          "rgba(67, 123, 226, 1)",
+          "rgba(0, 202, 202, 1)",
+          "rgba(2, 142, 119, 1)",
+        ],
+        borderWidth: 3,
+      },
+    ],
+  };
 
   return (
     <>
@@ -104,16 +160,16 @@ const Wallet = (props) => {
           </tbody>
         </table>
       </div>
-      <Content assets={assets} />
+      <Content data={data} assets={assets} />
     </>
   );
 };
 
-const Content = ({ assets }) => {
+const Content = ({ assets, data }) => {
   return (
     <div className="content">
       <div className="PieChart__container">
-        <PieChart assets={assets} />
+        <PieChart data={data} assets={assets} />
       </div>
     </div>
   );

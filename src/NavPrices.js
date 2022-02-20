@@ -8,14 +8,14 @@ const NavPrices = (props) => {
   const [coins, setCoins] = useState([]);
   const STORED_COINS = "coins list";
 
-  // useEffect(() => {
-  //   const storedCoins = JSON.parse(localStorage.getItem(STORED_COINS));
-  //   setCoins(storedCoins);
-  // }, []);
+  useEffect(() => {
+    const storedCoins = JSON.parse(localStorage.getItem(STORED_COINS));
+    if (storedCoins) setCoins(storedCoins);
+  }, []);
 
-  // useEffect(() => {
-  //   localStorage.setItem(STORED_COINS, JSON.stringify(coins));
-  // }, [coins]);
+  useEffect(() => {
+    localStorage.setItem(STORED_COINS, JSON.stringify(coins));
+  }, [coins]);
 
   useEffect(() => {
     fetch(
