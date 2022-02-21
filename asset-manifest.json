@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/crpo/static/css/main.ea800e7e.css",
+    "main.js": "/crpo/static/js/main.5e9a283a.js",
+    "static/media/crpo-logo.svg": "/crpo/static/media/crpo-logo.8336ac22b93ce8d7c474464dc70dfaf9.svg",
+    "index.html": "/crpo/index.html",
+    "static/media/DownCarat.svg": "/crpo/static/media/DownCarat.a72398bd785402714e66b5c0b0b4058a.svg",
+    "main.ea800e7e.css.map": "/crpo/static/css/main.ea800e7e.css.map",
+    "main.5e9a283a.js.map": "/crpo/static/js/main.5e9a283a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ea800e7e.css",
+    "static/js/main.5e9a283a.js"
+  ]
+}
