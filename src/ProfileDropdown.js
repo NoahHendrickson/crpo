@@ -4,7 +4,10 @@ export const ProfileDropdown = (props) => {
   return (
     <div className="dropdown">
       <span className="dropdown__title">{props.dropdownTitle}</span>
-      <form>
+      <span className="fillerContent">
+        This is where profile info will go when I learn how to use firebase :)
+      </span>
+      {/* <form>
         <label>Username</label>
         <input placeholder="Email" />
         <label>Password</label>
@@ -14,7 +17,7 @@ export const ProfileDropdown = (props) => {
           <button className="profileButton">Sign Up</button>
           <button className="profileButton">Login</button>
         </div>
-      </form>
+      </form> */}
     </div>
   );
 };
@@ -24,10 +27,30 @@ export const DonateDropdown = (props) => {
     <div className="dropdown">
       <span className="dropdown__title">{props.dropdownTitle}</span>
       <div className="donateButton__container">
-        <button className="donateButton">send BTC</button>
+        <span className="fillerContent">
+          A place to support me once the app is deployed
+        </span>
+        {/* <button className="donateButton">send BTC</button>
         <button className="donateButton">send ETH</button>
         <button className="donateButton">Cashapp</button>
-        <button className="donateButton">Paypal</button>
+        <button className="donateButton">Paypal</button> */}
+      </div>
+    </div>
+  );
+};
+
+export const FeedbackDropdown = (props) => {
+  return (
+    <div className="dropdown">
+      <span className="dropdown__title">{props.dropdownTitle}</span>
+      <div className="donateButton__container">
+        <span className="fillerContent">
+          A place to give me feedback when the app is deployed
+        </span>
+        {/* <button className="donateButton">send BTC</button>
+        <button className="donateButton">send ETH</button>
+        <button className="donateButton">Cashapp</button>
+        <button className="donateButton">Paypal</button> */}
       </div>
     </div>
   );

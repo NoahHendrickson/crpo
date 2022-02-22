@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import Coin from "./Coin";
 import CoinList from "./CoinList";
+import { ReactComponent as SideCarat } from "./icons/SideCarat.svg";
 
 const NavPrices = (props) => {
   const parentRef = useRef();
@@ -51,6 +52,7 @@ const NavPrices = (props) => {
     <div className="navPrices">
       <CoinList coins={coins} />
       <div className="navPrices__slider">
+        <SideCarat className="SideCarat" />
         <form onSubmit={addCoin} className="navPrices__form">
           <label>Ticker</label>
           <input

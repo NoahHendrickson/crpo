@@ -11,7 +11,7 @@
 :root {
   --green: rgba(2, 142, 119, 1);
   --blue-green: rgba(0, 202, 202, 1);
-  --blue: rgba(67, 123, 226, 1);
+  --blue: rgb(22, 97, 236);
   --dark: rgb(26, 29, 54);
   --orange: rgba(241, 119, 4, 1);
   --orangeOP: rgba(241, 119, 4, 0.8);

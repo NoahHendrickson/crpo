@@ -16,6 +16,13 @@ const Wallet = (props) => {
   const STORED_PIECHART_LABELS = "Pie Chart Labels";
   const STORED_PIECHART_AMOUNTS = "Pie Chart Amounts";
 
+  function removeAllAssets(e) {
+    window.location.reload(false);
+    localStorage.removeItem(STORED_ASSETS);
+    localStorage.removeItem(STORED_PIECHART_LABELS);
+    localStorage.removeItem(STORED_PIECHART_AMOUNTS);
+  }
+
   useEffect(() => {
     const storedAmounts = JSON.parse(
       localStorage.getItem(STORED_PIECHART_AMOUNTS)
@@ -64,15 +71,13 @@ const Wallet = (props) => {
 
   let labelPassDown = [];
   let assetData = [];
-  function addAsset(e) {
-    e.preventDefault();
-
+  function addAsset() {
     let ticker = inputNameRef.current.value;
     let amount = inputAmountRef.current.value;
     let exchange = inputExchangeRef.current.value;
 
     for (let i = 0; i < assetData[0].length; i++) {
-      if (assetData[0][i].symbol === ticker) {
+      if (assetData[0][i].symbol === ticker.toLowerCase()) {
         setAssets((prevAssets) => {
           return [
             ...prevAssets,
@@ -134,6 +139,7 @@ const Wallet = (props) => {
               ref={inputAmountRef}
               className="wallet__input"
               placeholder="Quantity"
+              type="Number"
             />
             <input
               ref={inputExchangeRef}
@@ -141,6 +147,15 @@ const Wallet = (props) => {
               placeholder="Exchange"
             />
             <button className="wallet__button--long">Add</button>
+          </form>
+          <form onSubmit={removeAllAssets} className="wallet__form">
+            <button
+              onClick={() => window.location.reload(false)}
+              type="submit"
+              className="wallet__button--long short"
+            >
+              Delete All Assets
+            </button>
           </form>
           <DownCarat className="DownCarat" />
         </div>
@@ -168,6 +183,11 @@ const Wallet = (props) => {
 const Content = ({ assets, data }) => {
   return (
     <div className="content">
+      <h1 className="PieChartHeader">
+        {assets.length < 1
+          ? "Enter Your Assets on The Left to Visualize your Portfolio"
+          : "Your Portfolio"}
+      </h1>
       <div className="PieChart__container">
         <PieChart data={data} assets={assets} />
       </div>

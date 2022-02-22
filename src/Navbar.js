@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import { ReactComponent as Logo } from "./icons/crpo-logo.svg";
-import { ProfileDropdown, DonateDropdown } from "./ProfileDropdown";
+import {
+  ProfileDropdown,
+  DonateDropdown,
+  FeedbackDropdown,
+} from "./ProfileDropdown";
 import NavPrices from "./NavPrices";
 
 const Navbar = (props) => {
@@ -15,7 +19,9 @@ const Navbar = (props) => {
         <NavButton icon="🤑">
           <DonateDropdown dropdownTitle="Buy Me Chipotle" />
         </NavButton>
-        <NavButton icon="🤬" />
+        <NavButton icon="🤬">
+          <FeedbackDropdown dropdownTitle="Feedback" />
+        </NavButton>
       </NavList>
     </nav>
   );

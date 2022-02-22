@@ -31,7 +31,7 @@ const Asset = ({ assets, removeAsset }) => {
           : Number(assets.amount * prices).toFixed(2)}
       </td>
       <td className="tableData__button">
-        <button onClick={removeAsset}>X</button>
+        {/* <button onClick={removeAsset}>X</button> */}
       </td>
     </tr>
   );
