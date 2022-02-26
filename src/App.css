@@ -129,7 +129,10 @@ th {
 .navPrices__slider {
   position: absolute;
   z-index: 0;
-  display: flex;
+  display: grid;
+  grid-template-columns: 0.2fr 0.8fr;
+  grid-template-rows: 1fr 1fr;
+  align-items: center;
   right: -50px;
   transform: translateX(195px);
   height: 100%;
@@ -143,19 +146,24 @@ th {
   transform: translateX(95px);
 }
 
+.navPrices__button {
+  width: 80px;
+}
+
 .SideCarat {
-  width: 0.7em;
-  margin-left: 5px;
+  grid-row: span 2;
+  height: 25px;
+  margin: auto 5px;
 }
 
 .navPrices__input {
+  margin-top: 10px;
+  margin-bottom: 10px;
   width: 70px;
-  padding: 5px 0px;
-  margin-bottom: 5px;
 }
 
 .navPrices__form {
-  margin: 0px 15px;
+  margin: 0px;
 }
 
 .coin {

@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import WalletTable from "./WalletTable";
 import { ReactComponent as DownCarat } from "./icons/DownCarat.svg";
 import PieChart from "./PieChart";
+import WalletTableHead from "./WalletTableHead";
 
 const Wallet = (props) => {
   const [assets, setAssets] = useState([]);
@@ -71,7 +72,8 @@ const Wallet = (props) => {
 
   let labelPassDown = [];
   let assetData = [];
-  function addAsset() {
+  function addAsset(e) {
+    e.preventDefault();
     let ticker = inputNameRef.current.value;
     let amount = inputAmountRef.current.value;
     let exchange = inputExchangeRef.current.value;
@@ -91,7 +93,7 @@ const Wallet = (props) => {
           ];
         });
         setChartLabels((prevChartLabels) => {
-          return [...prevChartLabels, assetData[0][i].symbol];
+          return [...prevChartLabels, assetData[0][i].symbol.toUpperCase()];
         });
         setChartAmounts((prevChartAmounts) => {
           return [...prevChartAmounts, amount * assetData[0][i].current_price];
@@ -99,6 +101,7 @@ const Wallet = (props) => {
       }
     }
   }
+
   const data = {
     labels: chartLabels,
     datasets: [
@@ -150,7 +153,7 @@ const Wallet = (props) => {
           </form>
           <form onSubmit={removeAllAssets} className="wallet__form">
             <button
-              onClick={() => window.location.reload(false)}
+              onClick={() => window.location.reload(true)}
               type="submit"
               className="wallet__button--long short"
             >
@@ -161,15 +164,7 @@ const Wallet = (props) => {
         </div>
         <h1 className="wallet__title">Wallet</h1>
         <table>
-          <thead>
-            <tr>
-              <th>Asset</th>
-              <th>Amount</th>
-              <th>Exchanage</th>
-              <th>Price</th>
-              <th>Total Value</th>
-            </tr>
-          </thead>
+          <thead>{assets.length < 1 ? "" : <WalletTableHead />}</thead>
           <tbody>
             <WalletTable removeAsset={removeAsset} assets={assets} />
           </tbody>
@@ -185,7 +180,7 @@ const Content = ({ assets, data }) => {
     <div className="content">
       <h1 className="PieChartHeader">
         {assets.length < 1
-          ? "Enter Your Assets on The Left to Visualize your Portfolio"
+          ? "⬅️ Enter Your Assets on The Left"
           : "Your Portfolio"}
       </h1>
       <div className="PieChart__container">

@@ -48,19 +48,27 @@ const NavPrices = (props) => {
       }
     }
   }
+
+  function removeAllCoins(e) {
+    // window.location.reload(false);
+    localStorage.removeItem(STORED_COINS);
+  }
+
   return (
     <div className="navPrices">
       <CoinList coins={coins} />
       <div className="navPrices__slider">
         <SideCarat className="SideCarat" />
         <form onSubmit={addCoin} className="navPrices__form">
-          <label>Ticker</label>
           <input
             ref={tickerRef}
             className="navPrices__input"
-            placeholder="ticker"
+            placeholder="Ticker"
           />
-          <button>Submit</button>
+          <button className="navPrices__button">Submit</button>
+        </form>
+        <form onSubmit={removeAllCoins} className="navPrices__form">
+          <button className="navPrices__button">Remove All</button>
         </form>
       </div>
     </div>
