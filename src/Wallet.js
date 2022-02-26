@@ -17,7 +17,7 @@ const Wallet = (props) => {
   const STORED_PIECHART_AMOUNTS = "Pie Chart Amounts";
 
   function removeAllAssets(e) {
-    window.location.reload(false);
+    // window.location.reload(false);
     localStorage.removeItem(STORED_ASSETS);
     localStorage.removeItem(STORED_PIECHART_LABELS);
     localStorage.removeItem(STORED_PIECHART_AMOUNTS);
