@@ -6,19 +6,23 @@
   font-style: normal;
   text-decoration: none;
   list-style: none;
+  box-sizing: border-box;
 }
 
 :root {
   --green: rgba(2, 142, 119, 1);
+  --mid: rgb(32, 176, 184);
   --blue-green: rgba(0, 202, 202, 1);
   --blue: rgb(22, 97, 236);
-  --dark: rgb(26, 29, 54);
+  --dark: rgb(26, 22, 25);
   --orange: rgba(241, 119, 4, 1);
   --orangeOP: rgba(241, 119, 4, 0.8);
   --electric: rgba(91, 28, 237, 1);
-  --electricOP: rgba(91, 28, 237, 0.8);
+  --electricLight: rgb(54, 7, 165);
+  --electricOP: rgba(91, 28, 237, 0.75);
   --light: rgba(145, 255, 156, 1);
-  --lightOP: rgba(145, 255, 156, 0.8);
+  --lightDark: rgb(63, 129, 69);
+  --lightOP: rgba(145, 255, 156, 0.75);
   --white: rgb(255, 251, 228);
-  --mainShadow: 5px 5px 10px 0px rgba(20, 20, 20, 0.8);
+  --mainShadow: -5px 5px 10px 0px rgba(20, 20, 20, 0.8);
 }

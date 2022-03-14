@@ -65,10 +65,10 @@ const NavPrices = (props) => {
             className="navPrices__input"
             placeholder="Ticker"
           />
-          <button className="navPrices__button">Submit</button>
+          <button className="navPrices__button">Add</button>
         </form>
         <form onSubmit={removeAllCoins} className="navPrices__form">
-          <button className="navPrices__button">Remove All</button>
+          <button className="navPrices__button">Del</button>
         </form>
       </div>
     </div>
