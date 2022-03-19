@@ -124,12 +124,12 @@ th {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  margin: 0px auto 0px 0px;
   height: 100%;
   width: 100%;
 }
 
 .navPrices__slider {
+  position: absolute;
   z-index: 0;
   display: flex;
   align-items: center;
@@ -174,11 +174,24 @@ th {
 }
 
 .coin {
-  font-size: 0.9em;
-  margin: 25px;
+  position: relative;
+  font-size: 0.75em;
+  margin-right: 50px;
+  background-color: var(--electric);
+  border-radius: 15px;
+  padding: 10px 30px 10px 25px;
+}
+
+.remove {
+  position: absolute;
+  width: 15px;
+  background: none;
+  top: 5px;
+  right: 10px;
 }
 
 .dropdown {
+  text-align: center;
   display: flex;
   flex-direction: column;
   position: relative;

@@ -20,7 +20,8 @@ const Coin = ({ coins }) => {
 
   return (
     <ul className="coin">
-      <li>{coins.name.toUpperCase()} 🚀</li>
+      <li>{coins.name.toUpperCase()}</li>
+      <button className="remove">❌</button>
       <li>${currentPrice === undefined ? coins.price : currentPrice}</li>
     </ul>
   );
