@@ -174,20 +174,29 @@ th {
 }
 
 .coin {
-  position: relative;
-  font-size: 0.75em;
-  margin-right: 50px;
+  display: flex;
   background-color: var(--electric);
+  margin: 0px 5px;
   border-radius: 15px;
-  padding: 10px 30px 10px 25px;
+  padding: 10px 15px;
+  box-shadow: 3px 3px 10px rgba(25, 25, 25, 0.25);
 }
 
-.remove {
-  position: absolute;
-  width: 15px;
+.coin__info {
+  font-size: 0.75em;
+}
+
+.coin__removeButton {
+  position: relative;
+  top: -5px;
+  right: 0px;
   background: none;
-  top: 5px;
-  right: 10px;
+  width: 25px;
+  font-size: 0.75em;
+}
+
+.trashcan {
+  width: 20px;
 }
 
 .dropdown {

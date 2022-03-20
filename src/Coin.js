@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import { ReactComponent as Trashcan } from "./icons/trashcan-01.svg";
 
 const Coin = ({ coins }) => {
   const [currentPrice, setCurrentPrice] = useState();
@@ -18,12 +19,20 @@ const Coin = ({ coins }) => {
     return () => {};
   }, [coins]);
 
+  function test() {
+    console.log("hello");
+  }
+
   return (
-    <ul className="coin">
-      <li>{coins.name.toUpperCase()}</li>
-      <button className="remove">❌</button>
-      <li>${currentPrice === undefined ? coins.price : currentPrice}</li>
-    </ul>
+    <div className="coin">
+      <ul className="coin__info">
+        <li>{coins.name.toUpperCase()}</li>
+        <li>${currentPrice === undefined ? coins.price : currentPrice}</li>
+      </ul>
+      <button onClick={test} className="coin__removeButton">
+        <Trashcan />
+      </button>
+    </div>
   );
 };
 
