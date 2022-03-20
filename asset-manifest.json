@@ -1,16 +1,17 @@
 {
   "files": {
-    "main.css": "/crpo/static/css/main.894b64ad.css",
-    "main.js": "/crpo/static/js/main.c4397096.js",
+    "main.css": "/crpo/static/css/main.98681160.css",
+    "main.js": "/crpo/static/js/main.4d07930d.js",
     "static/media/crpo-logo.svg": "/crpo/static/media/crpo-logo.8336ac22b93ce8d7c474464dc70dfaf9.svg",
+    "static/media/trashcan-01.svg": "/crpo/static/media/trashcan-01.865c6b04c1195065a4ca0c0ca7748ee0.svg",
     "index.html": "/crpo/index.html",
     "static/media/DownCarat.svg": "/crpo/static/media/DownCarat.a72398bd785402714e66b5c0b0b4058a.svg",
     "static/media/SideCarat.svg": "/crpo/static/media/SideCarat.6ca85a1cac76f48046a34641a4a37247.svg",
-    "main.894b64ad.css.map": "/crpo/static/css/main.894b64ad.css.map",
-    "main.c4397096.js.map": "/crpo/static/js/main.c4397096.js.map"
+    "main.98681160.css.map": "/crpo/static/css/main.98681160.css.map",
+    "main.4d07930d.js.map": "/crpo/static/js/main.4d07930d.js.map"
   },
   "entrypoints": [
-    "static/css/main.894b64ad.css",
-    "static/js/main.c4397096.js"
+    "static/css/main.98681160.css",
+    "static/js/main.4d07930d.js"
   ]
 }
