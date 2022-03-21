@@ -55,10 +55,33 @@ const Wallet = (props) => {
     localStorage.setItem(STORED_ASSETS, JSON.stringify(assets));
   }, [assets]);
 
-  function removeAsset() {
-    setAssets(() => {
-      return [...assets.slice(0, -1)];
-    });
+  function removeAsset(e) {
+    const selected = e.target.closest("tr");
+    console.log(selected.getAttribute("data"));
+    for (let i = 0; i < assets.length; i++) {
+      if (assets[i].name === selected.getAttribute("data")) {
+        const loser = assets.indexOf(assets[i]);
+        console.log("fuck yea");
+        assets.splice(loser, 1);
+        localStorage.setItem(STORED_ASSETS, JSON.stringify(assets));
+        window.location.reload(true);
+      }
+      if (chartLabels[i].toLowerCase() === selected.getAttribute("data")) {
+        const loser = chartLabels.indexOf(chartLabels[i]);
+        console.log("fuck yea");
+        chartLabels.splice(loser, 1);
+        chartAmounts.splice(loser, 1);
+        localStorage.setItem(
+          STORED_PIECHART_LABELS,
+          JSON.stringify(chartLabels)
+        );
+        localStorage.setItem(
+          STORED_PIECHART_AMOUNTS,
+          JSON.stringify(chartAmounts)
+        );
+        window.location.reload(true);
+      }
+    }
   }
 
   useEffect(() => {
@@ -164,7 +187,7 @@ const Wallet = (props) => {
         </div>
         <h1 className="wallet__title">Wallet</h1>
         <table>
-          <thead>{assets.length < 1 ? "" : <WalletTableHead />}</thead>
+          <thead>{assets.length < 1 ? null : <WalletTableHead />}</thead>
           <tbody>
             <WalletTable removeAsset={removeAsset} assets={assets} />
           </tbody>

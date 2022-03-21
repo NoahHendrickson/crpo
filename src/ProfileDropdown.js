@@ -43,15 +43,43 @@ export const FeedbackDropdown = (props) => {
   return (
     <div className="dropdown">
       <span className="dropdown__title">{props.dropdownTitle}</span>
-      <div className="donateButton__container">
-        <span className="fillerContent">
-          A place to give me feedback when the app is deployed
-        </span>
-        {/* <button className="donateButton">send BTC</button>
-        <button className="donateButton">send ETH</button>
-        <button className="donateButton">Cashapp</button>
-        <button className="donateButton">Paypal</button> */}
-      </div>
+      <form
+        className="feedback__form"
+        action="https://formsubmit.co/noahjames017@gmail.com"
+        method="POST"
+      >
+        <input
+          type="hidden"
+          name="_next"
+          value="https://noahhendrickson.github.io/crpo/?"
+        ></input>
+        <input
+          className="feedback__input"
+          type="text"
+          name="name"
+          placeholder="Your Name"
+          required
+        />
+        <input
+          className="feedback__input"
+          type="email"
+          name="email"
+          placeholder="Your Email"
+          required
+        />
+        <input type="hidden" name="_subject" value="New submission!"></input>
+        <textarea
+          className="feedback__input feedback__message"
+          type="text"
+          name="message"
+          placeholder="Write Your Message Here"
+          required
+        ></textarea>
+
+        <button className="feedback__button" type="submit">
+          Send
+        </button>
+      </form>
     </div>
   );
 };

@@ -35,7 +35,7 @@ const NavPrices = (props) => {
     for (let i = 0; i < coinData[0].length; i++) {
       if (coinData[0][i].symbol === ticker) {
         let price = coinData[0][i].current_price;
-        let id = coinData[0][i].id;
+        let id = coinData[0][i].symbol;
         let name = coinData[0][i].symbol;
         let icon = coinData[0][i].image;
         console.log(price);
@@ -54,9 +54,23 @@ const NavPrices = (props) => {
     localStorage.removeItem(STORED_COINS);
   }
 
+  function removeCoin(e) {
+    const selected = e.target.closest(".coin");
+    console.log(selected.getAttribute("data"));
+    for (let i = 0; i < coins.length; i++) {
+      if (coins[i].id === selected.getAttribute("data")) {
+        const loser = coins.indexOf(coins[i]);
+
+        coins.splice(loser, 1);
+        localStorage.setItem(STORED_COINS, JSON.stringify(coins));
+        window.location.reload(true);
+      }
+    }
+  }
+
   return (
     <div className="navPrices">
-      <CoinList coins={coins} />
+      <CoinList coins={coins} removeCoin={removeCoin} />
       <div className="navPrices__slider">
         <SideCarat className="SideCarat" />
         <form onSubmit={addCoin} className="navPrices__form">
@@ -68,7 +82,7 @@ const NavPrices = (props) => {
           <button className="navPrices__button">Add</button>
         </form>
         <form onSubmit={removeAllCoins} className="navPrices__form">
-          <button className="navPrices__button">Del</button>
+          <button className="navPrices__button">Del All</button>
         </form>
       </div>
     </div>

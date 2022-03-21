@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
-import { ReactComponent as Trashcan } from "./icons/trashcan-01.svg";
+import { ReactComponent as RemoveX } from "./icons/removeX-01.svg";
 
-const Coin = ({ coins }) => {
+const Coin = ({ coins, removeCoin }) => {
   const [currentPrice, setCurrentPrice] = useState();
 
   useEffect(() => {
@@ -19,18 +19,14 @@ const Coin = ({ coins }) => {
     return () => {};
   }, [coins]);
 
-  function test() {
-    console.log("hello");
-  }
-
   return (
-    <div className="coin">
+    <div data={coins.id} className="coin">
       <ul className="coin__info">
         <li>{coins.name.toUpperCase()}</li>
         <li>${currentPrice === undefined ? coins.price : currentPrice}</li>
       </ul>
-      <button onClick={test} className="coin__removeButton">
-        <Trashcan />
+      <button onClick={removeCoin} className="coin__removeButton">
+        <RemoveX />
       </button>
     </div>
   );

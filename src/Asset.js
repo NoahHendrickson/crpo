@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { ReactComponent as RemoveX } from "./icons/removeX-01.svg";
 import "./App.css";
 
 const Asset = ({ assets, removeAsset }) => {
@@ -20,7 +21,7 @@ const Asset = ({ assets, removeAsset }) => {
   }, [assets]);
 
   return (
-    <tr>
+    <tr data={assets.name}>
       <td>{assets.name.toUpperCase()}</td>
       <td>{assets.amount}</td>
       <td>{assets.exchange}</td>
@@ -31,7 +32,9 @@ const Asset = ({ assets, removeAsset }) => {
           : Number(assets.amount * prices).toFixed(2)}
       </td>
       <td className="tableData__button">
-        {/* <button onClick={removeAsset}>X</button> */}
+        <button className="removeAsset__button" onClick={removeAsset}>
+          <RemoveX />
+        </button>
       </td>
     </tr>
   );

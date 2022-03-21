@@ -10,7 +10,9 @@ import NavPrices from "./NavPrices";
 const Navbar = (props) => {
   return (
     <nav className="navbar">
-      <Logo className="navbar__logo" />
+      <div className="logo__container">
+        <Logo className="navbar__logo" />
+      </div>
       <NavPrices />
       <NavList>
         <NavButton icon="😇">
