@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/crpo/static/css/main.98681160.css",
-    "main.js": "/crpo/static/js/main.4d07930d.js",
+    "main.css": "/crpo/static/css/main.496906cb.css",
+    "main.js": "/crpo/static/js/main.154d8efb.js",
     "static/media/crpo-logo.svg": "/crpo/static/media/crpo-logo.8336ac22b93ce8d7c474464dc70dfaf9.svg",
-    "static/media/trashcan-01.svg": "/crpo/static/media/trashcan-01.865c6b04c1195065a4ca0c0ca7748ee0.svg",
     "index.html": "/crpo/index.html",
     "static/media/DownCarat.svg": "/crpo/static/media/DownCarat.a72398bd785402714e66b5c0b0b4058a.svg",
     "static/media/SideCarat.svg": "/crpo/static/media/SideCarat.6ca85a1cac76f48046a34641a4a37247.svg",
-    "main.98681160.css.map": "/crpo/static/css/main.98681160.css.map",
-    "main.4d07930d.js.map": "/crpo/static/js/main.4d07930d.js.map"
+    "static/media/removeX-01.svg": "/crpo/static/media/removeX-01.65c790aacce490fe183c49e78d35f7ec.svg",
+    "main.496906cb.css.map": "/crpo/static/css/main.496906cb.css.map",
+    "main.154d8efb.js.map": "/crpo/static/js/main.154d8efb.js.map"
   },
   "entrypoints": [
-    "static/css/main.98681160.css",
-    "static/js/main.4d07930d.js"
+    "static/css/main.496906cb.css",
+    "static/js/main.154d8efb.js"
   ]
 }
