@@ -1,7 +1,6 @@
 {
   "name": "crpo",
   "version": "0.1.0",
-  "homepage": "https://noahhendrickson.github.io/crpo/",
   "private": true,
   "dependencies": {
     "-": "^0.0.1",
