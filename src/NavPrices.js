@@ -16,7 +16,7 @@ const NavPrices = (props) => {
 
   useEffect(() => {
     localStorage.setItem(STORED_COINS, JSON.stringify(coins));
-  }, [coins]);
+  }, [coins, STORED_COINS]);
 
   useEffect(() => {
     fetch(
@@ -60,8 +60,8 @@ const NavPrices = (props) => {
     for (let i = 0; i < coins.length; i++) {
       if (coins[i].id === selected.getAttribute("data")) {
         const loser = coins.indexOf(coins[i]);
-
         coins.splice(loser, 1);
+
         localStorage.setItem(STORED_COINS, JSON.stringify(coins));
         window.location.reload(true);
       }
@@ -70,7 +70,9 @@ const NavPrices = (props) => {
 
   return (
     <div className="navPrices">
-      <CoinList coins={coins} removeCoin={removeCoin} />
+      <div className="coin__container">
+        <CoinList coins={coins} removeCoin={removeCoin} />
+      </div>
       <div className="navPrices__slider">
         <SideCarat className="SideCarat" />
         <form onSubmit={addCoin} className="navPrices__form">

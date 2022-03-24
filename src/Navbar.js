@@ -6,6 +6,7 @@ import {
   FeedbackDropdown,
 } from "./ProfileDropdown";
 import NavPrices from "./NavPrices";
+import onClickOutside from "react-onclickoutside";
 
 const Navbar = (props) => {
   return (
@@ -39,6 +40,17 @@ const NavList = (props) => {
 
 const NavButton = (props) => {
   const [open, setOpen] = useState(false);
+
+  document.addEventListener("click", (e) => {
+    const thisDropdown = e.target.matches(".navButton__icon");
+    const thisMenu = e.target.closest(".dropdown");
+    if (!thisDropdown) {
+      setOpen(false);
+    }
+    if (thisMenu) {
+      setOpen(open);
+    }
+  });
 
   return (
     <li>

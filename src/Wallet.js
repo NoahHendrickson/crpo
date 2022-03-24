@@ -165,7 +165,7 @@ const Wallet = (props) => {
               ref={inputAmountRef}
               className="wallet__input"
               placeholder="Quantity"
-              type="Number"
+              type="Integer"
             />
             <input
               ref={inputExchangeRef}
