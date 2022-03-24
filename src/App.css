@@ -5,7 +5,7 @@
 nav {
   background-color: var(--blue-green);
   width: 100vw;
-  height: 125px;
+  height: 100px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -57,6 +57,13 @@ table {
   width: 90%;
 }
 
+@media (max-width: 400px) {
+  table {
+    font-size: 0.75em;
+    margin-top: 5px;
+  }
+}
+
 td {
   text-align: center;
   color: var(--white);
@@ -83,15 +90,17 @@ th {
 }
 
 .logo__container {
+  padding: 10px;
   display: flex;
   height: 100%;
   width: 15%;
   flex-shrink: 0;
 }
 
-.navbar__logo {
-  width: 100%;
-  margin: 10px 10px 10px 10px;
+@media screen and (max-width: 400px) {
+  .logo__container {
+    width: 35%;
+  }
 }
 
 .navList {
@@ -109,6 +118,10 @@ th {
   /* box-shadow: inset 0px 0px 0px 5px var(--electricLight); */
 }
 
+.navList__items {
+  display: flex;
+}
+
 .navButton__icon {
   position: relative;
   font-size: 1.75em;
@@ -123,22 +136,25 @@ th {
 }
 
 @media screen and (max-width: 400px) {
+  .navList {
+    margin: 10px;
+    background-color: none;
+    box-shadow: none;
+  }
   .navButton__icon {
-    font-size: 1em;
-    width: 30px;
-    height: 30px;
+    margin: 5px;
+    font-size: 1.5em;
   }
 
-  .navList {
-    width: 100px;
-    flex-direction: column;
+  .navList__items {
+    display: flex;
   }
 }
 
-.navButton__icon:hover {
+/* .navButton__icon:hover {
   background-color: var(--electricOP);
   box-shadow: 0px 0px 5px var(--electricOP);
-}
+} */
 
 .navPrices {
   font-size: 1.5em;
@@ -170,6 +186,12 @@ th {
 
 .navPrices__slider:hover {
   transform: translateX(50px);
+}
+
+@media screen and (max-width: 400px) {
+  .navPrices__slider {
+    display: none;
+  }
 }
 
 .navPrices__button {
@@ -235,7 +257,6 @@ th {
     grid-template-rows: 1fr 1fr;
     gap: 0.25em;
     justify-content: flex-end;
-    direction: rtl;
   }
 
   .coin__info {
@@ -256,15 +277,13 @@ th {
   display: flex;
   flex-direction: column;
   position: relative;
-  background-color: var(--light);
+  background-color: var(--electric);
   position: absolute;
   top: 60px;
   right: 20px;
   width: 200px;
   border-radius: 15px 15px 15px 15px;
-  color: var(--electric);
-  /* border: solid 3px var(--white); */
-  box-shadow: 0px 0px 10px 0px var(--light);
+  color: var(--white);
 }
 
 .feedback__form {
@@ -290,7 +309,7 @@ th {
 .dropdown__title {
   padding: 5px;
   margin: 5px auto;
-  color: var(--electric);
+  color: var(--white);
   font-size: 1.5em;
 }
 
@@ -349,7 +368,7 @@ th {
 @media screen and (max-width: 400px) {
   .wallet {
     width: 100%;
-    height: 35%;
+    height: 25%;
   }
 }
 
@@ -409,6 +428,11 @@ th {
   text-align: center;
   margin-top: 50px;
   color: var(--white);
+}
+
+@media (max-width: 400px) {
+  .wallet__title {
+  }
 }
 
 .wallet__list {

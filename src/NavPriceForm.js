@@ -3,7 +3,7 @@ import Coin from "./Coin";
 import CoinList from "./CoinList";
 import { ReactComponent as SideCarat } from "./icons/SideCarat.svg";
 
-const NavPrices = (props) => {
+const NavPriceForm = (props) => {
   const parentRef = useRef();
   const tickerRef = useRef();
   const [coins, setCoins] = useState([]);
@@ -91,4 +91,4 @@ const NavPrices = (props) => {
   );
 };
 
-export default NavPrices;
+export default NavPriceForm;

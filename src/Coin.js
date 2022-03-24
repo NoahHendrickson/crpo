@@ -21,13 +21,13 @@ const Coin = ({ coins, removeCoin }) => {
 
   return (
     <div data={coins.id} className="coin">
-      <button onClick={removeCoin} className="coin__removeButton">
-        <RemoveX />
-      </button>
       <ul className="coin__info">
         <li>{coins.name.toUpperCase()}</li>
         <li>${currentPrice === undefined ? coins.price : currentPrice}</li>
       </ul>
+      <button onClick={removeCoin} className="coin__removeButton">
+        <RemoveX />
+      </button>
     </div>
   );
 };

@@ -5,7 +5,7 @@ import {
   DonateDropdown,
   FeedbackDropdown,
 } from "./ProfileDropdown";
-import NavPrices from "./NavPrices";
+import NavPriceForm from "./NavPriceForm";
 import onClickOutside from "react-onclickoutside";
 
 const Navbar = (props) => {
@@ -14,7 +14,7 @@ const Navbar = (props) => {
       <div className="logo__container">
         <Logo className="navbar__logo" />
       </div>
-      <NavPrices />
+      <NavPriceForm />
       <NavList>
         <NavButton icon="😇">
           <ProfileDropdown dropdownTitle="Profile" />
