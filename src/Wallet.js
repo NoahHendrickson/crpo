@@ -96,7 +96,6 @@ const Wallet = (props) => {
   let labelPassDown = [];
   let assetData = [];
   function addAsset(e) {
-    e.preventDefault();
     let ticker = inputNameRef.current.value;
     let amount = inputAmountRef.current.value;
     let exchange = inputExchangeRef.current.value;
@@ -118,12 +117,50 @@ const Wallet = (props) => {
         setChartLabels((prevChartLabels) => {
           return [...prevChartLabels, assetData[0][i].symbol.toUpperCase()];
         });
-        setChartAmounts((prevChartAmounts) => {
-          return [...prevChartAmounts, amount * assetData[0][i].current_price];
-        });
+        const updating = new WebSocket(
+          `wss://stream.binance.com:9443/ws/${assetData[0][i].symbol}usdt@trade`
+        );
+
+        updating.onmessage = (e) => {
+          let priceObject = JSON.parse(e.data);
+          let current = parseFloat(priceObject.p).toFixed(2);
+          console.log(current);
+          setChartAmounts(() => {
+            return [amount * current];
+          });
+        };
       }
     }
   }
+
+  // function addToChart(e) {
+  //   const ws = new WebSocket(`wss://stream.binance.com:9443/ws/$ethusdt@trade`);
+
+  //   ws.onmessage = (e) => {
+  //     let priceObject = JSON.parse(e.data);
+  //     let current = parseFloat(priceObject.p).toFixed(2);
+  //     console.log(current);
+  //     setChartAmounts(() => {
+  //       return [current];
+  //     });
+  //   };
+  // }
+
+  // useEffect(() => {
+  //   const ws = new WebSocket(
+  //     `wss://stream.binance.com:9443/ws/${assets.name}usdt@trade`
+  //   );
+
+  //   ws.onmessage = (e) => {
+  //     let priceObject = JSON.parse(e.data);
+  //     let current = parseFloat(priceObject.p).toFixed(2);
+  //     console.log(current);
+  //     setChartAmounts((prevChartAmounts) => {
+  //       return [...prevChartAmounts, current];
+  //     });
+  //   };
+  //   return () => {};
+  // }, [assets]);
 
   const data = {
     labels: chartLabels,

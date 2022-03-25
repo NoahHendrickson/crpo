@@ -107,9 +107,10 @@ th {
   .logo__container {
     width: 50%;
     display: flex;
+    justify-content: flex-start;
   }
   .navbar__logo {
-    width: 100%;
+    width: 80%;
   }
 }
 
@@ -146,7 +147,7 @@ th {
 
 @media screen and (max-width: 500px) {
   .navList {
-    justify-content: flex-end;
+    justify-content: center;
     background-color: none;
     box-shadow: none;
     width: 50%;
@@ -295,7 +296,7 @@ th {
   position: absolute;
   top: 60px;
   right: 20px;
-  width: 200px;
+  width: 225px;
   border-radius: 15px 15px 15px 15px;
   color: var(--white);
 }
@@ -446,6 +447,9 @@ th {
 
 @media (max-width: 500px) {
   .wallet__title {
+  }
+  .removeX {
+    width: 100%;
   }
 }
 

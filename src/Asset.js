@@ -33,7 +33,7 @@ const Asset = ({ assets, removeAsset }) => {
       </td>
       <td className="tableData__button">
         <button className="removeAsset__button" onClick={removeAsset}>
-          <RemoveX />
+          <RemoveX className="removeX" />
         </button>
       </td>
     </tr>
