@@ -1,23 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { ReactComponent as RemoveX } from "./icons/removeX-01.svg";
+import { getPricingRt } from "./helpers";
 import "./App.css";
 
 const Asset = ({ assets, removeAsset }) => {
-  const [prices, setPrices] = useState();
+  const [prices, setPrices] = useState(assets.price);
 
   useEffect(() => {
-    const ws = new WebSocket(
-      `wss://stream.binance.com:9443/ws/${assets.name}usdt@trade`
-    );
-
-    ws.onmessage = (e) => {
-      let priceObject = JSON.parse(e.data);
-      let current = parseFloat(priceObject.p).toFixed(2);
-      setPrices(() => {
-        return [current];
-      });
-    };
-    return () => {};
+    return getPricingRt(assets.name, (price) => {
+      setPrices([price]);
+    })
   }, [assets]);
 
   return (
@@ -25,7 +17,7 @@ const Asset = ({ assets, removeAsset }) => {
       <td>{assets.name.toUpperCase()}</td>
       <td>{assets.amount}</td>
       <td>{assets.exchange}</td>
-      <td>{prices === undefined ? assets.price : prices}</td>
+      <td>{prices}</td>
       <td>
         {assets.amount * prices === NaN
           ? "quick maths"

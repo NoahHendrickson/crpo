@@ -22,6 +22,20 @@ const options = {
 };
 
 const PieChart = ({ assets, data }) => {
+  // const [liveAmt, setLiveAmt] = useState([]);
+
+  // assets.map((assets) => {
+  //   const ws = new WebSocket(
+  //     `wss://stream.binance.com:9443/ws/${assets.name}usdt@trade`
+  //   );
+  //   ws.onmessage = (e) => {
+  //     let priceObject = JSON.parse(e.data);
+  //     let current = parseFloat(priceObject.p).toFixed(2);
+  //     setLiveAmt(() => {
+  //       return [current];
+  //     });
+  //   };
+  // });
   return <Doughnut options={options} data={data} width={200} height={300} />;
 };
 
