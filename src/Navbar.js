@@ -7,6 +7,7 @@ import {
 } from "./ProfileDropdown";
 import NavPriceForm from "./NavPriceForm";
 import onClickOutside from "react-onclickoutside";
+import Model, { set } from "@expressive/mvc";
 
 const Navbar = (props) => {
   return (
@@ -38,23 +39,40 @@ const NavList = (props) => {
   );
 };
 
-const NavButton = (props) => {
-  const [open, setOpen] = useState(false);
+debugger
+class DropdownControl extends Model {
+  open = false;
 
-  document.addEventListener("click", (e) => {
-    const thisDropdown = e.target.matches(".navButton__icon");
-    const thisMenu = e.target.closest(".dropdown");
-    if (!thisDropdown) {
-      setOpen(false);
-    }
-    if (thisMenu) {
-      setOpen(open);
-    }
-  });
+  toggleMenu = () => {
+    this.open = !this.open;
+  }
+
+
+}
+
+
+// document.addEventListener("click", (e) => {
+//   const thisDropdown = e.target.closest(".navButton__icon");
+//   const thisMenu = e.target.closest(".dropdown");
+//   if (!thisDropdown) {
+//     console.log('hello')
+//     this.open = false;
+//   }
+//   // if (thisMenu) {
+//   //   set(true);
+//   // }
+// });
+
+const NavButton = (props) => {
+  const {
+    open,
+    toggleMenu,
+  } = DropdownControl.use()
+
 
   return (
     <li>
-      <a onClick={() => setOpen(!open)} href="#" className="navButton__icon">
+      <a onClick={ toggleMenu } href="#" className="navButton__icon">
         {props.icon}
       </a>
       {open && props.children}
