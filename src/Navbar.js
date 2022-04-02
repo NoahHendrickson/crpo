@@ -39,7 +39,6 @@ const NavList = (props) => {
   );
 };
 
-debugger
 class DropdownControl extends Model {
   open = false;
 
@@ -72,7 +71,7 @@ const NavButton = (props) => {
 
   return (
     <li>
-      <a onClick={ toggleMenu } href="#" className="navButton__icon">
+      <a onClick={toggleMenu} href="#" className="navButton__icon">
         {props.icon}
       </a>
       {open && props.children}

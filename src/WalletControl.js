@@ -29,36 +29,24 @@ class WalletControl extends Model {
   assetData = [];
 
   // in general what the set() syntax loooks like
-  coins = set(
-    () => [],
-    (nextCoin) => {
-      setToStorage(STORED_COINS, nextCoin);
-    }
-  );
+  coins = set(() => [], (nextCoin) => {
+    setToStorage(STORED_COINS, nextCoin);
+  });
 
   tickerRef = ref();
 
-  assets = set(
-    () => [],
-    (next) => {
-      setToStorage(STORED_ASSETS, next);
-    }
-  );
+  assets = set(() => [], (next) => {
+    setToStorage(STORED_ASSETS, next);
+  });
 
-  chartLabels = set(
-    () => [],
-    (next) => {
-      setToStorage(STORED_PIECHART_LABELS, next);
-    }
-  );
+  chartLabels = set(() => [], (next) => {
+    setToStorage(STORED_PIECHART_LABELS, next);
+  });
 
   // i know whats going on here for the most part
-  chartAmounts = set(
-    () => [],
-    (next) => {
-      setToStorage(STORED_PIECHART_AMOUNTS, next);
-    }
-  );
+  chartAmounts = set(() => [], (next) => {
+    setToStorage(STORED_PIECHART_AMOUNTS, next);
+  });
 
   pieData = from(this, (state) => {
     // this is slightly confusing
