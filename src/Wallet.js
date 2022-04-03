@@ -13,7 +13,6 @@ const Wallet = (props) => {
   const {
     get: control,
     assets,
-    pieData,
     removeAsset
   } = WalletControl.use();
 
@@ -29,7 +28,7 @@ const Wallet = (props) => {
           </tbody>
         </table>
       </div>
-      <Content data={pieData} assets={assets} />
+      <Content />
     </Provider>
   );
 };
@@ -77,7 +76,9 @@ const SlideDown = () => {
   )
 }
 
-const Content = ({ assets, data }) => {
+const Content = () => {
+  const { pieData, assets } = WalletControl.tap();
+
   return (
     <div className="content">
       <h1 className="PieChartHeader">
@@ -86,7 +87,7 @@ const Content = ({ assets, data }) => {
           : "Your Portfolio"}
       </h1>
       <div className="PieChart__container">
-        <PieChart data={data} assets={assets} />
+        <PieChart data={pieData} assets={assets} />
       </div>
     </div>
   );

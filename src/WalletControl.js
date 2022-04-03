@@ -1,4 +1,4 @@
-import Model, { from, ref, set } from "@expressive/mvc";
+import Model, { from, ref } from "@expressive/mvc";
 import { getJSON, getFromStorage, setToStorage, getPricingRt } from "./helpers";
 
 const STORED_ASSETS = "assets list";
@@ -7,96 +7,39 @@ const STORED_PIECHART_AMOUNTS = "Pie Chart Amounts";
 const COIN_GECKO = "https://api.coingecko.com/api/v3/coins/markets";
 const STORED_COINS = "coins list";
 
-const PIE_BACKGROUND = [
-  "rgba(241, 119, 4, .5)",
-  "rgba(91, 28, 237, .5)",
-  "rgba(145, 255, 156, .5)",
-  "rgba(67, 123, 226, .5)",
-  "rgba(0, 202, 202, .5)",
-  "rgba(2, 142, 119, .5)",
-];
-
-const PIE_BORDER = [
-  "rgba(241, 119, 4, 1)",
-  "rgba(91, 28, 237, 1)",
-  "rgba(145, 255, 156, 1)",
-  "rgba(67, 123, 226, 1)",
-  "rgba(0, 202, 202, 1)",
-  "rgba(2, 142, 119, 1)",
-];
-
 class WalletControl extends Model {
   assetData = [];
-
-  // in general what the set() syntax loooks like
-  coins = set(() => [], (nextCoin) => {
-    setToStorage(STORED_COINS, nextCoin);
-  });
+  coins = getFromStorage(STORED_COINS) || [];
+  assets = getFromStorage(STORED_ASSETS) || [];
+  chartLabels = getFromStorage(STORED_PIECHART_LABELS) || [];
+  chartAmounts = getFromStorage(STORED_PIECHART_AMOUNTS) || [];
 
   tickerRef = ref();
-
-  assets = set(() => [], (next) => {
-    setToStorage(STORED_ASSETS, next);
-  });
-
-  chartLabels = set(() => [], (next) => {
-    setToStorage(STORED_PIECHART_LABELS, next);
-  });
-
-  // i know whats going on here for the most part
-  chartAmounts = set(() => [], (next) => {
-    setToStorage(STORED_PIECHART_AMOUNTS, next);
-  });
-
-  pieData = from(this, (state) => {
-    // this is slightly confusing
-    const { chartLabels, chartAmounts } = state;
-
-    return {
-      labels: chartLabels,
-      datasets: [
-        {
-          data: chartAmounts,
-          backgroundColor: PIE_BACKGROUND,
-          borderColor: PIE_BORDER,
-          borderWidth: 3,
-        },
-      ],
-    };
-  });
-
   inputNameRef = ref();
   inputAmountRef = ref();
   inputExchangeRef = ref();
 
-  // this is basically useEffect? didmount, update, etc?
-  didCreate() {
-    const storedAssets = getFromStorage(STORED_ASSETS);
-    const storedLabels = getFromStorage(STORED_PIECHART_LABELS);
-    const storedAmounts = getFromStorage(STORED_PIECHART_AMOUNTS);
-    const storedCoins = getFromStorage(STORED_COINS);
+  constructor(){
+    super();
 
-    if (storedCoins) this.coins = storedCoins;
+    this.effect(state => {
+      setToStorage(STORED_COINS, state.coins);
+      setToStorage(STORED_ASSETS, state.assets);
+      setToStorage(STORED_PIECHART_LABELS, state.chartLabels);
+      setToStorage(STORED_PIECHART_AMOUNTS, state.chartAmounts);
+    })
 
-    if (storedAmounts) this.chartAmounts = storedAmounts;
-
-    if (storedLabels) this.chartLabels = storedLabels;
-
-    if (storedAssets) this.assets = storedAssets;
-
-    this.getCoinPrices();
-  }
-
-  async getCoinPrices() {
-    const data = await getJSON(COIN_GECKO, {
+    const requestCoins = getJSON(COIN_GECKO, {
       vs_currency: "usd",
       order: "market_cap_desc",
       per_page: 100,
       page: 1,
       sparkline: false,
+    })
+    
+    requestCoins.then(coins => {
+      this.assetData = this.assetData.concat(coins);
     });
-
-    this.assetData = this.assetData.concat(data);
   }
 
   addCoin = (e) => {
@@ -153,6 +96,7 @@ class WalletControl extends Model {
       });
 
       this.chartLabels = this.chartLabels.concat(coin.symbol.toUpperCase());
+      this.chartAmounts = this.chartAmounts.concat(amount * coin.current_price)
     }
   };
 
