@@ -82,22 +82,20 @@ class WalletControl extends Model {
     let amount = this.inputAmountRef.current.value;
     let exchange = this.inputExchangeRef.current.value;
 
-    for (let i = 0; i < assetData.length; i++) {
-      const coin = assetData[i];
+    const coin = this.assetData.find(coin => {
+      return coin.symbol === ticker.toLowerCase()
+    })
 
-      if (coin.symbol !== ticker.toLowerCase()) continue;
+    this.assets = this.assets.concat({
+      id: coin.id,
+      name: coin.symbol,
+      price: coin.current_price,
+      amount: amount,
+      exchange: exchange,
+    });
 
-      this.assets = this.assets.concat({
-        id: coin.id,
-        name: coin.symbol,
-        price: coin.current_price,
-        amount: amount,
-        exchange: exchange,
-      });
-
-      this.chartLabels = this.chartLabels.concat(coin.symbol.toUpperCase());
-      this.chartAmounts = this.chartAmounts.concat(amount * coin.current_price)
-    }
+    this.chartLabels = this.chartLabels.concat(coin.symbol.toUpperCase());
+    this.chartAmounts = this.chartAmounts.concat(amount * coin.current_price)
   };
 
   removeAsset = (e) => {

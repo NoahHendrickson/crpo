@@ -1,28 +1,28 @@
-import React, { useState, useRef, useEffect } from "react";
-import { Provider } from "@expressive/mvc";
-import WalletTable from "./WalletTable";
-import { ReactComponent as DownCarat } from "./icons/DownCarat.svg";
-import PieChart from "./PieChart";
-import WalletTableHead from "./WalletTableHead";
-import WalletControl from "./WalletControl";
-import { getJSON } from "./helpers";
+import { Provider } from '@expressive/mvc';
+import React, { useEffect, useRef, useState } from 'react';
 
-const COIN_GECKO = "https://api.coingecko.com/api/v3/coins/markets";
+import { ReactComponent as DownCarat } from './icons/DownCarat.svg';
+import PieChart from './PieChart';
+import WalletControl from './WalletControl';
+import WalletTable from './WalletTable';
+import WalletTableHead from './WalletTableHead';
 
 const Wallet = (props) => {
   const {
-    get: control,
+    get: wallet,
     assets,
     removeAsset
   } = WalletControl.use();
 
   return (
-    <Provider of={control}>
+    <Provider of={wallet}>
       <div className="wallet">
         <SlideDown />
         <h1 className="wallet__title">Wallet</h1>
         <table>
-          <thead>{assets.length < 1 ? null : <WalletTableHead />}</thead>
+          <thead>
+            {assets.length < 1 ? null : <WalletTableHead />}
+          </thead>
           <tbody>
             <WalletTable removeAsset={removeAsset} assets={assets} />
           </tbody>
@@ -66,8 +66,7 @@ const SlideDown = () => {
       <form onSubmit={removeAllAssets} className="wallet__form">
         <button
           type="submit"
-          className="wallet__button--long short"
-        >
+          className="wallet__button--long short">
           Delete All Assets
         </button>
       </form>
@@ -78,13 +77,14 @@ const SlideDown = () => {
 
 const Content = () => {
   const { pieData, assets } = WalletControl.tap();
+  const title = assets.length < 1
+    ? "⬅️ Enter Your Assets on The Left"
+    : "Your Portfolio"
 
   return (
     <div className="content">
       <h1 className="PieChartHeader">
-        {assets.length < 1
-          ? "⬅️ Enter Your Assets on The Left"
-          : "Your Portfolio"}
+        {title}
       </h1>
       <div className="PieChart__container">
         <PieChart data={pieData} assets={assets} />
