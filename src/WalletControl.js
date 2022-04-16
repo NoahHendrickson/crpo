@@ -95,9 +95,11 @@ class WalletControl extends Model {
     });
 
     this.chartLabels = this.chartLabels.concat(coin.symbol.toUpperCase());
-    getPricingRt(coin.symbol, (price) => {
-      this.chartAmounts = amount * price;
-    });
+    this.chartAmounts = this.chartAmounts.concat(coin.current_price * amount)
+
+    // getPricingRt(coin.symbol, (price) => {
+    //   this.chartAmounts = amount * price;
+    // });
   };
 
   removeAsset = (e) => {

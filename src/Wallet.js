@@ -11,7 +11,8 @@ const Wallet = (props) => {
   const {
     get: wallet,
     assets,
-    removeAsset
+    removeAsset,
+    totalValue
   } = WalletControl.use();
 
   return (
