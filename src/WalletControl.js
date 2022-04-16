@@ -19,15 +19,15 @@ class WalletControl extends Model {
   inputAmountRef = ref();
   inputExchangeRef = ref();
 
-  constructor(){
+  constructor() {
     super();
 
-    this.effect(state => {
+    this.effect((state) => {
       setToStorage(STORED_COINS, state.coins);
       setToStorage(STORED_ASSETS, state.assets);
       setToStorage(STORED_PIECHART_LABELS, state.chartLabels);
       setToStorage(STORED_PIECHART_AMOUNTS, state.chartAmounts);
-    })
+    });
 
     const requestCoins = getJSON(COIN_GECKO, {
       vs_currency: "usd",
@@ -35,9 +35,9 @@ class WalletControl extends Model {
       per_page: 100,
       page: 1,
       sparkline: false,
-    })
-    
-    requestCoins.then(coins => {
+    });
+
+    requestCoins.then((coins) => {
       this.assetData = this.assetData.concat(coins);
     });
   }
@@ -82,9 +82,9 @@ class WalletControl extends Model {
     let amount = this.inputAmountRef.current.value;
     let exchange = this.inputExchangeRef.current.value;
 
-    const coin = this.assetData.find(coin => {
-      return coin.symbol === ticker.toLowerCase()
-    })
+    const coin = this.assetData.find((coin) => {
+      return coin.symbol === ticker.toLowerCase();
+    });
 
     this.assets = this.assets.concat({
       id: coin.id,
@@ -95,7 +95,9 @@ class WalletControl extends Model {
     });
 
     this.chartLabels = this.chartLabels.concat(coin.symbol.toUpperCase());
-    this.chartAmounts = this.chartAmounts.concat(amount * coin.current_price)
+    getPricingRt(coin.symbol, (price) => {
+      this.chartAmounts = amount * price;
+    });
   };
 
   removeAsset = (e) => {
