@@ -16,17 +16,6 @@ const Navbar = (props) => {
         <Logo className="navbar__logo" />
       </div>
       <NavPriceForm />
-      <NavList>
-        <NavButton icon="😇">
-          <ProfileDropdown dropdownTitle="Profile" />
-        </NavButton>
-        <NavButton icon="🤑">
-          <DonateDropdown dropdownTitle="Buy Me Chipotle" />
-        </NavButton>
-        <NavButton icon="🤬">
-          <FeedbackDropdown dropdownTitle="Feedback" />
-        </NavButton>
-      </NavList>
     </nav>
   );
 };
