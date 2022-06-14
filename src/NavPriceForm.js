@@ -20,7 +20,6 @@ const NavPriceForm = (props) => {
         <CoinList coins={coins} removeCoin={removeCoin} />
       </div>
       <div className="navPrices__slider">
-        <SideCarat className="SideCarat" />
         <form onSubmit={addCoin} className="navPrices__form">
           <input
             ref={tickerRef}
