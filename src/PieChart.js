@@ -31,11 +31,18 @@ const PIE_BORDER = [
 ChartJS.register(CategoryScale, LinearScale, ArcElement, Legend, Tooltip);
 
 const options = {
+  layout: {
+    padding: {
+      top: 25,
+    },
+  },
   animation: true,
   plugins: {
-    title: {
+    legend: {
       display: true,
-      text: "Portfolio",
+      labels: {
+        padding: 25,
+      },
     },
   },
 };

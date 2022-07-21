@@ -1,25 +1,22 @@
 .App {
   width: 100vw;
   height: 100vh;
-  background-color: var(--electric);
-  padding-top: 35px;
-  background-image: url('./icons/50.png');
+  background-color: var(--electricLight);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
 nav {
-  backdrop-filter: blur(20px);
-  background-color: #fff3;
-  border-radius: 25px;
+  border-bottom: solid rgba(26, 22, 25, .25) 3px;
   margin: auto;
   width: 95%;
-  height: 100px;
+  height: 10%;
   display: flex;
   justify-content: flex-end;
   align-items: center;
   position: relative;
+  margin-bottom: 2.5%;
 }
 
 @media (max-width: 500px) {
@@ -63,7 +60,7 @@ button {
   height: 30px;
   border: none;
   border-radius: 5px;
-  background: var(--electric);
+  background: var(--mid);
 }
 
 table {
@@ -202,7 +199,6 @@ th {
   align-items: center;
   justify-content: space-around;
   height: 100%;
-  width: 275px;
   backdrop-filter: blur(20px);
   border-radius: 15px 25px 25px 15px;
   overflow: hidden;
@@ -245,6 +241,10 @@ th {
   margin: 0px;
 }
 
+.navPrices__button--bigger {
+  width: 100px;
+}
+
 .coin__container {
   display: flex;
 }
@@ -252,25 +252,29 @@ th {
 .coin {
   position: relative;
   display: flex;
-  backdrop-filter: blur(20px);
-  margin: 0px 5px;
-  border-radius: 15px;
-  padding: 10px 15px;
-  box-shadow: 0px 0px 10px rgba(25, 25, 25, 0.15);
+  margin: 0px 15px;
+  /* border-radius: 15px; */
+  border-right: solid rgba(26, 22, 25, .25) 3px;
 }
 
 .coin__info {
   font-size: 0.75em;
+  text-align: right;
 }
 
 .coin__removeButton {
-  margin-left: 15px;
-  position: relative;
-  top: -5px;
-  right: 0px;
-  background: none;
-  width: 15px;
-  font-size: 0.75em;
+  width: 25px;
+  height: 25px;
+  background-color: #0002;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin: 0px 10px 0px 10px;
+}
+
+.x__button {
+  width: 50%;
 }
 
 @media screen and (max-width: 500px) {
@@ -368,9 +372,8 @@ th {
 .body {
   display: flex;
   justify-content: space-between;
-  width: 95%;
-  margin: 25px auto;
-  height: calc(100vh - 185px);
+  width: 100%;
+  height: 80%;
 }
 
 @media screen and (max-width: 500px) {
@@ -385,12 +388,9 @@ th {
   align-items: center;
   position: relative;
   z-index: 1;
-  background-color: #fff3;
-  backdrop-filter: blur(20px);
+  border-right: solid rgba(26, 22, 25, .25) 3px;
   width: 35%;
   height: 100%;
-  border-radius: 50px;
-  box-shadow: 0px 0px 25px rgba(25, 25, 25, 0.25);
 }
 
 @media screen and (max-width: 500px) {
@@ -404,9 +404,7 @@ th {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  backdrop-filter: blur(20px);
-  width: 100%;
-  border-radius: 50px 50px 25px 25px;
+  width: 90%;
 }
 
 .wallet__slidedown:hover {
@@ -414,7 +412,7 @@ th {
 }
 
 .DownCarat {
-  margin: 0px auto 10px auto;
+  margin: 10px auto 25px auto;
   width: 25px;
 }
 
@@ -438,7 +436,7 @@ th {
   background: none;
   width: 25px;
   height: 25px;
-  background-color: var(--electric);
+  background-color: var(--orange);
 }
 
 .removeAsset__button:hover {
@@ -451,7 +449,7 @@ th {
 
 .wallet__title {
   text-align: center;
-  margin-top: 50px;
+  margin-top: 25px;
   color: var(--white);
 }
 
@@ -474,13 +472,7 @@ th {
 }
 
 .content {
-  border-radius: 50px;
-  backdrop-filter: blur(20px);
-  background-color: #fff3;
-  /* box-shadow: inset 15px 15px 20px -10px rgba(255,  255, 255, .25), inset
-  -15px -15px 20px -10px rgba(25,  25, 25, .25); */
-  box-shadow: 0px 0px 25px rgba(25, 25, 25, 0.25);
-  width: calc(65% - 25px );
+  width: 65%;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -501,7 +493,6 @@ th {
 }
 
 .PieChartHeader {
-  margin-top: 50px;
   font-size: 1.5em;
   color: var(--white);
 }

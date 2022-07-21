@@ -9,7 +9,8 @@ class NavPriceFormControl extends Model {
 
   tickerRef = ref();
 
-  removeAllCoins = () => {
+  removeAllCoins = (e) => {
+    e.preventDefault();
     localStorage.removeItem(STORED_COINS);
     this.coins = [];
   };

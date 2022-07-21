@@ -45,7 +45,7 @@ class WalletControl extends Model {
   addCoin = (e) => {
     e.preventDefault();
     const { assetData } = this;
-    let ticker = this.tickerRef.current.value;
+    let ticker = this.tickerRef.current.value.toLowerCase();
 
     for (let i = 0; i < assetData.length; i++) {
       const coin = assetData[i];
@@ -61,6 +61,7 @@ class WalletControl extends Model {
   };
 
   removeCoin = (e) => {
+    
     const selected = e.target.closest(".coin");
     const { coins } = this;
 
@@ -127,7 +128,8 @@ class WalletControl extends Model {
     }
   };
 
-  removeAllAssets = () => {
+  removeAllAssets = (e) => {
+    e.preventDefault();
     localStorage.removeItem(STORED_ASSETS);
     localStorage.removeItem(STORED_PIECHART_LABELS);
     localStorage.removeItem(STORED_PIECHART_AMOUNTS);
@@ -137,7 +139,9 @@ class WalletControl extends Model {
     this.chartAmounts = [];
   };
 
-  removeAllCoins = () => {
+  removeAllCoins = (e) => {
+    e.preventDefault();
+
     localStorage.removeItem(STORED_COINS);
 
     this.coins = [];

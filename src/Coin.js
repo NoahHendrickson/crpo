@@ -19,7 +19,7 @@ const Coin = ({ coins, removeCoin }) => {
         <li>${currentPrice}</li>
       </ul>
       <button onClick={removeCoin} className="coin__removeButton">
-        <RemoveX />
+        <RemoveX className="x__button"/>
       </button>
     </div>
   );

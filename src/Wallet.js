@@ -71,7 +71,6 @@ const SlideDown = () => {
           Delete All Assets
         </button>
       </form>
-      <DownCarat className="DownCarat" />
     </div>
   )
 }

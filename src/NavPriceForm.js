@@ -26,7 +26,7 @@ const NavPriceForm = (props) => {
             className="navPrices__input"
             placeholder="Ticker"
           />
-          <button className="navPrices__button">Add</button>
+          <button className="navPrices__button navPrices__button--bigger">Add</button>
         </form>
         <form onSubmit={removeAllCoins} className="navPrices__form">
           <button className="navPrices__button">Del All</button>
